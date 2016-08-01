@@ -1,6 +1,7 @@
 var tradingview = require('./tradingview')
 
 
-tradingview.getCharts(0, function(data) {
-	console.log(data);
+tradingview.getChartsHTML(18, function(data) {
+	// console.log(data.html);
+	console.log(tradingview.parseChartsHTML(data.html))
 });

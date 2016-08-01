@@ -1,4 +1,5 @@
 var request = require('request');
+var cheerio = require('cheerio');
 
 const TV_HOST = 'https://www.tradingview.com'
 
@@ -6,7 +7,7 @@ const TV_HOST = 'https://www.tradingview.com'
 module.exports = {
 
 
-	getCharts: function (start, cb) {
+	getChartsHTML: function (start, cb) {
 
 		var options = {
 			url: TV_HOST + '/chart/',
@@ -43,6 +44,7 @@ module.exports = {
 				
 
 				cb({
+					error: error,
 					start: bodyObj.start,
 					count: bodyObj.results.count,
 					html: bodyObj.html
@@ -50,5 +52,42 @@ module.exports = {
 				});
 			}
 		});
+	},
+
+
+
+
+	parseChartsHTML: function(html) {
+		var $ = cheerio.load(html);
+		var parsedCharts = []
+
+
+
+		$('.stream-item-chart').each(function(i, elem) {
+			currentChart = {}
+			
+
+			currentChart.user = {
+				name: $(this).find('div.head a.avatar.userlink').data('username'),
+				url: $(this).find('div.head a.avatar.userlink').attr('href')
+			}
+
+			currentChart.url = $(this).data('info').published_chart_url.replace(/\\\//g, "/");
+
+			currentChart.image_url = $(this).find('img.chart-image').attr('src').replace('_mid', '');
+
+			currentChart.title = $(this).find('img.chart-image').attr('title').replace('_mid', '');
+
+			currentChart.pair = $(this).find('img.chart-image').attr('alt');
+
+			currentChart.direction = $(this).find('.chart-direction-label').text();
+
+
+
+			parsedCharts.push(currentChart);
+		});
+
+		return parsedCharts;
+
 	}
 }
