@@ -50,6 +50,9 @@ module.exports = {
 					html: bodyObj.html
 
 				});
+			} else {
+				console.error(error);
+				process.exit(1);
 			}
 		});
 	},
