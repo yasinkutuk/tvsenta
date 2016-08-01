@@ -32,7 +32,7 @@ module.exports = {
 		    })},
 
 		    function(){
-		    	console.log(parsedCharts);
+		    	cb(parsedCharts);
 		    }
 		);
 

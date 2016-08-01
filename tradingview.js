@@ -37,7 +37,6 @@ module.exports = {
 		};
 
 
-		console.log("hitting api");
 		request(options, function(error, response, body) {
 			if (!error && response.statusCode == 200) {
 				bodyObj = JSON.parse(body);
