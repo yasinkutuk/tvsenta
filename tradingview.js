@@ -74,15 +74,21 @@ module.exports = {
 
 			currentChart.url = $(this).data('info').published_chart_url.replace(/\\\//g, "/");
 
+			currentChart.id = $(this).data('uid');
+
 			currentChart.image_url = $(this).find('img.chart-image').attr('src').replace('_mid', '');
 
 			currentChart.title = $(this).find('img.chart-image').attr('title').replace('_mid', '');
+
+			currentChart.exchange = $(this).find('.symbol a').attr('title').split(':')[0];
 
 			currentChart.pair = $(this).find('img.chart-image').attr('alt');
 
 			currentChart.direction = $(this).find('.chart-direction-label').text();
 
+			currentChart.timestamp = parseInt($(this).find('.time-info').data('timestamp'));
 
+			currentChart.interval = $(this).find('.interval').text().replace(', ', '');
 
 			parsedCharts.push(currentChart);
 		});
