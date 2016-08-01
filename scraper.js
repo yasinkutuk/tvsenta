@@ -23,7 +23,7 @@ module.exports = {
 
 		        // log the iteration
 		        // console.log(loop.iteration());
-		        if (parsedCharts.length >= 50) {
+		        if (parsedCharts.length >= 14430) {
 		        	// Todo hook up database
 		        	loop.break();
 		        };

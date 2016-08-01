@@ -8,6 +8,11 @@ module.exports = {
 			
 			// Get the documents collection 
 			var collection = db.collection('charts');
+
+
+
+			// collection.findOne({mykey:1}, function(err, item) {});
+			
 			// Insert some documents 
 			collection.insertMany(arrayOfCharts, function(err, result) {
 				// callback(result);
