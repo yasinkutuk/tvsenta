@@ -7,7 +7,7 @@ const TV_HOST = 'https://www.tradingview.com'
 module.exports = {
 
 
-	getChartsHTML: function (start, cb) {
+	getChartsData: function (start, cb) {
 
 		var options = {
 			url: TV_HOST + '/chart/',
@@ -37,7 +37,7 @@ module.exports = {
 		};
 
 
-
+		console.log("hitting api");
 		request(options, function(error, response, body) {
 			if (!error && response.statusCode == 200) {
 				bodyObj = JSON.parse(body);
@@ -46,7 +46,8 @@ module.exports = {
 				cb({
 					error: error,
 					start: bodyObj.start,
-					count: bodyObj.results.count,
+					returned_count: bodyObj.results.count,
+					total_found: bodyObj.results.total_found,
 					html: bodyObj.html
 
 				});
