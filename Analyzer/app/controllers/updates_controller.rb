@@ -8,11 +8,12 @@ require 'mongo'
 		client = Mongo::Client.new('mongodb://root:password@ds042379.mlab.com:42379/tv')
 		collection = client[:charts]
 
-
+		counter = 0
 		collection.find.each do |document|
+			counter += 1
   			user = getOrCreateUser(document[:user][:name], document[:user][:url])
 			user.getOrCreateChart(	document[:url],
-									document[:tv_id],
+									document[:id],
 									document[:image_url],
 									document[:title],
 									document[:exchange],
@@ -22,6 +23,8 @@ require 'mongo'
 									document[:interval]
 								)
 		end
+
+		@stuff = counter
 
 	end
 
