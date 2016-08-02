@@ -1,42 +1,20 @@
-var asyncLoop = require('./lib/asyncloop');
 var tradingview = require('./tradingview');
 
 
 module.exports = {
 
-	scrape: function(cb) {
-		parsedCharts = [];
+	scrape: function(startAt, callback) {
+		var thisFile = this;
 
-		function getAndParseData(startAt, callback) {
-
-			tradingview.getChartsData(startAt, function(data) {
-				newCharts = tradingview.parseChartsHTML(data.html);
-
-				parsedCharts = parsedCharts.concat(newCharts);
-			    callback();
-			});
-		}
-
-
-		asyncLoop.asyncLoop(100000000, function(loop) {
-		    getAndParseData(parsedCharts.length, function() {
-
-		        // log the iteration
-		        // console.log(loop.iteration());
-		        if (parsedCharts.length >= 14430) {
-		        	// Todo hook up database
-		        	loop.break();
-		        };
-		        // Okay, for cycle could continue
-		        loop.next();
-		    })},
-
-		    function(){
-		    	cb(parsedCharts);
-		    }
-		);
-
-
+		tradingview.getChartsData(startAt, function(data) {
+			newCharts = tradingview.parseChartsHTML(data.html);
+			console.log('newcharts length', newCharts.length);
+			if (newCharts.length == 0) {
+				thisFile.scrape(startAt)
+			} else {
+				typeof callback === 'function' && callback(newCharts);
+			}
+		});
 
 	}
 

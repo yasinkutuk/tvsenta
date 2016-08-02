@@ -51,6 +51,7 @@ module.exports = {
 
 				});
 			} else {
+				console.error('request error');
 				console.error(error);
 				process.exit(1);
 			}
