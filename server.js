@@ -1,6 +1,7 @@
 var scraper = require('./scraper');
 var db = require('./db');
 
+var http_server = require('./http_server');
 
 function runScraper(startAt) {
 	if (!startAt) {
@@ -16,6 +17,11 @@ function runScraper(startAt) {
 }
 
 
-setInterval(function() {
-	runScraper();
-}, 60 * 1000);
+// setInterval(function() {
+// 	runScraper();
+// }, 60 * 1000);
+
+
+// http_server.runServer()
+
+db.getUsers()
