@@ -17,8 +17,8 @@ function runScraper(startAt) {
 }
 
 
-// setInterval(function() {
-// 	runScraper();
-// }, 60 * 1000);
+setInterval(function() {
+	runScraper();
+}, 60 * 1000);
 
 
