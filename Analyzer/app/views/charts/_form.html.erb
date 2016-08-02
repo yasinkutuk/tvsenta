@@ -1,0 +1,57 @@
+<%= form_for(@chart) do |f| %>
+  <% if @chart.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@chart.errors.count, "error") %> prohibited this chart from being saved:</h2>
+
+      <ul>
+      <% @chart.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :exchange_id %><br>
+    <%= f.text_field :exchange_id %>
+  </div>
+  <div class="field">
+    <%= f.label :pair_id %><br>
+    <%= f.text_field :pair_id %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_area :url %>
+  </div>
+  <div class="field">
+    <%= f.label :tv_id %><br>
+    <%= f.text_field :tv_id %>
+  </div>
+  <div class="field">
+    <%= f.label :image_url %><br>
+    <%= f.text_area :image_url %>
+  </div>
+  <div class="field">
+    <%= f.label :direction %><br>
+    <%= f.text_field :direction %>
+  </div>
+  <div class="field">
+    <%= f.label :timestamp %><br>
+    <%= f.number_field :timestamp %>
+  </div>
+  <div class="field">
+    <%= f.label :interval %><br>
+    <%= f.text_field :interval %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_area :title %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

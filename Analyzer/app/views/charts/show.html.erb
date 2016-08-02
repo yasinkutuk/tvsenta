@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @chart.user %>
+</p>
+
+<p>
+  <strong>Exchange:</strong>
+  <%= @chart.exchange %>
+</p>
+
+<p>
+  <strong>Pair:</strong>
+  <%= @chart.pair %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @chart.url %>
+</p>
+
+<p>
+  <strong>Tv:</strong>
+  <%= @chart.tv_id %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @chart.image_url %>
+</p>
+
+<p>
+  <strong>Direction:</strong>
+  <%= @chart.direction %>
+</p>
+
+<p>
+  <strong>Timestamp:</strong>
+  <%= @chart.timestamp %>
+</p>
+
+<p>
+  <strong>Interval:</strong>
+  <%= @chart.interval %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @chart.title %>
+</p>
+
+<%= link_to 'Edit', edit_chart_path(@chart) %> |
+<%= link_to 'Back', charts_path %>

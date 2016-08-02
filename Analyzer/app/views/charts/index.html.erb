@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Charts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Exchange</th>
+      <th>Pair</th>
+      <th>Url</th>
+      <th>Tv</th>
+      <th>Image url</th>
+      <th>Direction</th>
+      <th>Timestamp</th>
+      <th>Interval</th>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @charts.each do |chart| %>
+      <tr>
+        <td><%= chart.user %></td>
+        <td><%= chart.exchange %></td>
+        <td><%= chart.pair %></td>
+        <td><%= chart.url %></td>
+        <td><%= chart.tv_id %></td>
+        <td><%= chart.image_url %></td>
+        <td><%= chart.direction %></td>
+        <td><%= chart.timestamp %></td>
+        <td><%= chart.interval %></td>
+        <td><%= chart.title %></td>
+        <td><%= link_to 'Show', chart %></td>
+        <td><%= link_to 'Edit', edit_chart_path(chart) %></td>
+        <td><%= link_to 'Destroy', chart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Chart', new_chart_path %>
