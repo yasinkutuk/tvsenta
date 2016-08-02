@@ -22,6 +22,3 @@ function runScraper(startAt) {
 // }, 60 * 1000);
 
 
-// http_server.runServer()
-
-db.getUsers()
